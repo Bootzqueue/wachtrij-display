@@ -14,7 +14,7 @@
             position: absolute;
             top: 10px; 
             right: 20px; 
-            font-size: 50px; 
+            font-size: 100px; /* Verhoogde lettergrootte */
             font-weight: bold; 
             font-family: Arial, sans-serif; 
             color: red;
@@ -45,6 +45,23 @@
 
         function resetNumber() {
             queueNumber = 0;
-    
+            updateDisplay();
+        }
+
+        // Toetsenbordbesturing toevoegen
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowUp") { 
+                increaseNumber(); 
+            } else if (event.key === "ArrowDown") { 
+                decreaseNumber(); 
+            } else if (event.key.toLowerCase() === "r") { 
+                resetNumber(); 
+            }
+        });
+
+    </script>
+</body>
+</html>
+
 
 
