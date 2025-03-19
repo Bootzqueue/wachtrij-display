@@ -5,22 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wachtrij Nummer</title>
     <style>
-        body { text-align: center; font-size: 100px; font-family: Arial, sans-serif; background: white; color: red; }
-        #queue-number { font-size: 200px; font-weight: bold; }
+        body { text-align: center; font-size: 50px; font-family: Arial, sans-serif; background: white; color: red; }
+        #queue-number { font-size: 150px; font-weight: bold; }
+        .button { font-size: 40px; padding: 15px 30px; margin: 10px; cursor: pointer; border: none; border-radius: 10px; }
+        .plus { background-color: green; color: white; }
+        .minus { background-color: orange; color: white; }
+        .reset { background-color: red; color: white; }
     </style>
 </head>
 <body>
     <h1>Wij bedienen:</h1>
     <div id="queue-number">0</div>
+    <button class="button plus" onclick="increaseNumber()">+1</button>
+    <button class="button minus" onclick="decreaseNumber()">-1</button>
+    <button class="button reset" onclick="resetNumber()">Reset</button>
+
     <script>
         let queueNumber = 0;
+
         function updateDisplay() {
             document.getElementById("queue-number").innerText = queueNumber;
         }
+
+        function increaseNumber() {
+            queueNumber++;
+            updateDisplay();
+        }
+
+        function decreaseNumber() {
+            if (queueNumber > 0) {
+                queueNumber--;
+                updateDisplay();
+            }
+        }
+
+        function resetNumber() {
+            queueNumber = 0;
+            updateDisplay();
+        }
+
+        // Toetsenbordbesturing toevoegen
         document.addEventListener("keydown", (event) => {
-            if (event.key === "ArrowUp") { queueNumber++; updateDisplay(); }
-            if (event.key === "r") { queueNumber = 0; updateDisplay(); }
+            if (event.key === "ArrowUp") { increaseNumber(); }   // Pijltje omhoog ↑
+            if (event.key === "ArrowDown") { decreaseNumber(); } // Pijltje omlaag ↓
+            if (event.key === "r") { resetNumber(); }            // "r" om te resetten
         });
     </script>
 </body>
 </html>
+
