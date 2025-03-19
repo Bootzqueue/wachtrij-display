@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wachtrij Nummer</title>
+    <style>
+        body { text-align: center; font-size: 100px; font-family: Arial, sans-serif; background: transparent; color: red; }
+        #queue-number { font-size: 200px; }
+    </style>
+</head>
+<body>
+    <div id="queue-number">0</div>
+    <script>
+        let queueNumber = 0;
+
+        function updateDisplay() {
+            document.getElementById("queue-number").innerText = queueNumber;
+        }
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowUp") { queueNumber++; updateDisplay(); }
+            if (event.key === "r") { queueNumber = 0; updateDisplay(); }
+        });
+    </script>
+</body>
+</html>
